@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>[ชื่อ-นามสกุล] | Purple Lab Portfolio</title>
+
+  <meta
+    name="description"
+    content="Portfolio นักเรียนชั้นมัธยมศึกษาปีที่ 3 สำหรับสมัครเรียนต่อ ม.4 สายวิทย์-คณิต"
+  />
+
+  <!-- =========================================================
+       GOOGLE FONTS
+       ========================================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Prompt:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- =========================================================
+       TAILWIND CSS
+       ========================================================= -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lab: {
+              50: "#faf7ff",
+              100: "#f1e9ff",
+              200: "#e3d2ff",
+              300: "#c9aaff",
+              400: "#aa7bff",
+              500: "#8b5cf6",
+              600: "#7c3aed",
+              700: "#6d28d9",
+              800: "#5421a8",
+              900: "#32145f"
+            }
+          },
+
+          fontFamily: {
+            thai: ["Noto Sans Thai", "sans-serif"],
+            prompt: ["Prompt", "sans-serif"]
+          },
+
+          boxShadow: {
+            purple:
+              "0 25px 80px rgba(109, 40, 217, 0.18)",
+            card:
+              "0 15px 45px rgba(76, 29, 149, 0.09)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- =========================================================
+       CUSTOM CSS
+       ========================================================= -->
+  <style>
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Noto Sans Thai", sans-serif;
+      color: #24153d;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .prompt {
+      font-family: "Prompt", sans-serif;
+    }
+
+    /* =========================================================
+       BACKGROUND
+       ========================================================= */
+
+    .lab-bg {
+      background:
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(167, 139, 250, 0.22),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(192, 132, 252, 0.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #faf7ff 45%,
+          #f3ecff 100%
+        );
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(
+          rgba(124, 58, 237, 0.055) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(124, 58, 237, 0.055) 1px,
+          transparent 1px
+        );
+
+      background-size: 40px 40px;
+    }
+
+    .dot-bg {
+      background-image: radial-gradient(
+        rgba(124, 58, 237, 0.14) 1px,
+        transparent 1px
+      );
+
+      background-size: 24px 24px;
+    }
+
+    /* =========================================================
+       GLASS EFFECT
+       ========================================================= */
+
+    .glass {
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(139, 92, 246, 0.14);
+    }
+
+    /* =========================================================
+       FLOATING ELEMENTS
+       ========================================================= */
+
+    .float {
+      animation: floating 5s ease-in-out infinite;
+    }
+
+    .float-delay {
+      animation: floating 6s ease-in-out 1s infinite;
+    }
+
+    @keyframes floating {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    /* =========================================================
+       SCIENCE SYMBOL
+       ========================================================= */
+
+    .formula {
+      font-family: "Prompt", sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* =========================================================
+       PROJECT CARD
+       ========================================================= */
+
+    .project-card {
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow:
+        0 25px 60px rgba(109, 40, 217, 0.15);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    /* =========================================================
+       REVEAL ANIMATION
+       ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       SKILL BAR
+       ========================================================= */
+
+    .skill-bar {
+      overflow: hidden;
+      border-radius: 999px;
+      background: #ede9fe;
+    }
+
+    .skill-progress {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        90deg,
+        #8b5cf6,
+        #6d28d9
+      );
+    }
+
+    /* =========================================================
+       NAV ACTIVE
+       ========================================================= */
+
+    .nav-active {
+      color: #7c3aed !important;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       SELECTION
+       ========================================================= */
+
+    ::selection {
+      background: #c4b5fd;
+      color: #32145f;
+    }
+
+    /* =========================================================
+       ACCESSIBILITY
+       ========================================================= */
+
+    :focus-visible {
+      outline: 3px solid #8b5cf6;
+      outline-offset: 4px;
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================================================
+       NAVBAR
+       ========================================================= -->
+
+  <header
+    class="fixed left-0 right-0 top-0 z-50 border-b border-purple-100/60 bg-white/80 backdrop-blur-xl"
+  >
+
+    <nav
+      class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"
+    >
+
+      <!-- Logo -->
+      <a
+        href="#home"
+        class="flex items-center gap-3"
+        aria-label="กลับไปหน้าแรก"
+      >
+
+        <div
+          class="flex h-11 w-11 items-center justify-center rounded-2xl bg-lab-900 text-white shadow-lg"
+        >
+
+          <!-- Science Logo -->
+          <svg
+            class="h-6 w-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+
+            <path
+              d="M9 3v5l-4.5 8.2A3.2 3.2 0 0 0 7.3 21h9.4a3.2 3.2 0 0 0 2.8-4.8L15 8V3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <path
+              d="M8 13h8"
+              stroke-linecap="round"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="hidden sm:block">
+
+          <p class="prompt text-sm font-bold text-lab-900">
+            [ชื่อเล่น]
+          </p>
+
+          <p class="text-xs text-slate-500">
+            Purple Lab Portfolio
+          </p>
+
+        </div>
+
+      </a>
+
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-7 md:flex">
+
+        <a
+          href="#home"
+          class="nav-link text-sm text-slate-600 transition hover:text-lab-600"
+        >
+          Home
+        </a>
+
+        <a
+          href="#about"
+          class="nav-link text-sm text-slate-600 transition hover:text-lab-600"
+        >
+          About
+        </a>
+
+        <a
+          href="#skills"
+          class="nav-link text-sm text-slate-600 transition hover:text-lab-600"
+        >
+          Skills
+        </a>
+
+        <a
+          href="#projects"
+          class="nav-link text-sm text-slate-600 transition hover:text-lab-600"
+        >
+          Projects
+        </a>
+
+        <a
+          href="#contact"
+          class="rounded-full bg-lab-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-lab-800"
+        >
+          Contact
+        </a>
+
+      </div>
+
+
+      <!-- Mobile Button -->
+      <button
+        id="menu-button"
+        type="button"
+        class="rounded-xl p-2 text-lab-800 md:hidden"
+        aria-label="เปิดเมนู"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+
+        <svg
+          id="menu-open"
+          class="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+
+        </svg>
+
+        <svg
+          id="menu-close"
+          class="hidden h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+
+        </svg>
+
+      </button>
+
+    </nav>
+
+
+    <!-- Mobile Navigation -->
+    <div
+      id="mobile-menu"
+      class="max-h-0 overflow-hidden opacity-0 transition-all duration-300 md:hidden"
+    >
+
+      <div class="space-y-1 border-t border-purple-100 bg-white px-5 pb-5 pt-3">
+
+        <a
+          href="#home"
+          class="mobile-link block rounded-xl px-4 py-3 text-slate-600 hover:bg-purple-50"
+        >
+          Home
+        </a>
+
+        <a
+          href="#about"
+          class="mobile-link block rounded-xl px-4 py-3 text-slate-600 hover:bg-purple-50"
+        >
+          About
+        </a>
+
+        <a
+          href="#skills"
+          class="mobile-link block rounded-xl px-4 py-3 text-slate-600 hover:bg-purple-50"
+        >
+          Skills
+        </a>
+
+        <a
+          href="#projects"
+          class="mobile-link block rounded-xl px-4 py-3 text-slate-600 hover:bg-purple-50"
+        >
+          Projects
+        </a>
+
+        <a
+          href="#contact"
+          class="mobile-link block rounded-xl bg-lab-700 px-4 py-3 font-semibold text-white"
+        >
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
+    <!-- =========================================================
+         HERO SECTION
+         ========================================================= -->
+
+    <section
+      id="home"
+      class="lab-bg grid-bg relative min-h-screen overflow-hidden pt-24"
+    >
+
+      <!-- Decorative Circle -->
+      <div
+        class="absolute -left-32 top-32 h-72 w-72 rounded-full bg-purple-300/20 blur-3xl"
+      ></div>
+
+      <div
+        class="absolute -right-32 bottom-20 h-96 w-96 rounded-full bg-violet-300/20 blur-3xl"
+      ></div>
+
+
+      <div
+        class="mx-auto grid max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-2 lg:px-8"
+      >
+
+        <!-- Hero Text -->
+        <div class="reveal">
+
+          <div
+            class="mb-6 inline-flex items-center gap-3 rounded-full border border-lab-200 bg-white/70 px-4 py-2 text-sm font-medium text-lab-700 shadow-sm"
+          >
+
+            <span class="relative flex h-2.5 w-2.5">
+
+              <span
+                class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lab-500 opacity-60"
+              ></span>
+
+              <span
+                class="relative inline-flex h-2.5 w-2.5 rounded-full bg-lab-600"
+              ></span>
+
+            </span>
+
+            M.3 STUDENT • SCIENCE-MATH
+
+          </div>
+
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.28em] text-lab-600"
+          >
+            SCIENCE • MATHEMATICS • FUTURE
+          </p>
+
+
+          <!-- เปลี่ยนชื่อจริงตรงนี้ -->
+          <h1
+            class="prompt mt-5 text-5xl font-extrabold leading-tight text-lab-900 sm:text-6xl lg:text-7xl"
+          >
+            [ด.ญ.วรัญญา เวชคุณานุกูล]
+          </h1>
+
+
+          <div class="mt-6 flex items-center gap-4">
+
+            <div class="h-px w-12 bg-lab-500"></div>
+
+            <h2
+              class="prompt text-xl font-semibold text-slate-700 sm:text-2xl"
+            >
+              ว่าที่นักเรียนสายวิทย์–คณิต
+            </h2>
+
+          </div>
+
+
+          <p
+            class="mt-8 max-w-xl text-base leading-8 text-slate-600 sm:text-lg"
+          >
+            นักเรียนชั้นมัธยมศึกษาปีที่ 3
+            ผู้หลงใหลในการตั้งคำถาม การทดลอง
+            การคำนวณ และการค้นหาคำตอบด้วยเหตุผล
+            พร้อมเรียนรู้สิ่งใหม่และพัฒนาตัวเอง
+            เพื่อก้าวสู่การเรียนต่อในสายวิทย์–คณิต
+          </p>
+
+
+          <!-- Buttons -->
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+
+            <a
+              href="#projects"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl bg-lab-700 px-7 py-3.5 font-semibold text-white shadow-lg shadow-purple-200 transition hover:-translate-y-1 hover:bg-lab-800"
+            >
+
+              ดูผลงานของฉัน
+
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+
+              </svg>
+
+            </a>
+
+
+            <a
+              href="#about"
+              class="inline-flex items-center justify-center rounded-2xl border border-lab-200 bg-white/70 px-7 py-3.5 font-semibold text-lab-800 transition hover:bg-white"
+            >
+              ทำความรู้จักฉัน
+            </a>
+
+          </div>
+
+
+          <!-- Stats -->
+          <div class="mt-10 grid max-w-lg grid-cols-3 gap-3">
+
+            <div class="glass rounded-2xl p-4">
+
+              <p class="prompt text-xl font-bold text-lab-700">
+                M.3
+              </p>
+
+              <p class="mt-1 text-xs text-slate-500">
+                Current Level
+              </p>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-4">
+
+              <p class="prompt text-xl font-bold text-lab-700">
+                10+
+              </p>
+
+              <p class="mt-1 text-xs text-slate-500">
+                Activities
+              </p>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-4">
+
+              <p class="prompt text-xl font-bold text-lab-700">
+                ∞
+              </p>
+
+              <p class="mt-1 text-xs text-slate-500">
+                Curiosity
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             SCIENCE LAB VISUAL
+             ===================================================== -->
+
+        <div class="reveal relative mx-auto w-full max-w-xl">
+
+          <div
+            class="absolute -inset-8 rounded-[3rem] border border-lab-200/70"
+          ></div>
+
+          <div
+            class="absolute -inset-16 rounded-[4rem] border border-lab-100/70"
+          ></div>
+
+
+          <div
+            class="relative rounded-[2.5rem] border border-white/80 bg-white/70 p-5 shadow-purple backdrop-blur-xl"
+          >
+
+            <!-- Top Bar -->
+            <div class="mb-5 flex items-center justify-between">
+
+              <div class="flex items-center gap-2">
+
+                <span class="h-3 w-3 rounded-full bg-purple-300"></span>
+
+                <span class="h-3 w-3 rounded-full bg-violet-400"></span>
+
+                <span class="h-3 w-3 rounded-full bg-purple-600"></span>
+
+              </div>
+
+              <p class="prompt text-xs font-semibold tracking-widest text-slate-400">
+                LAB_01
+              </p>
+
+            </div>
+
+
+            <!-- Main Science Board -->
+            <div
+              class="grid-bg relative flex min-h-[470px] flex-col justify-between overflow-hidden rounded-[2rem] bg-gradient-to-br from-lab-900 via-lab-800 to-purple-700 p-7 text-white"
+            >
+
+              <!-- Decorative Circle -->
+              <div
+                class="absolute -right-20 -top-20 h-64 w-64 rounded-full border border-white/10"
+              ></div>
+
+              <div
+                class="absolute -bottom-24 -left-24 h-72 w-72 rounded-full border border-white/10"
+              ></div>
+
+
+              <!-- Formula -->
+              <div>
+
+                <p class="text-xs uppercase tracking-[0.3em] text-purple-300">
+                  MATHEMATICAL MODEL
+                </p>
+
+                <p
+                  class="formula mt-5 text-4xl font-semibold sm:text-5xl"
+                >
+                  f(x) = x² + 2x + 1
+                </p>
+
+                <p class="mt-3 text-sm text-purple-200">
+                  Explore • Calculate • Understand
+                </p>
+
+              </div>
+
+
+              <!-- Graph -->
+              <div class="relative mx-auto h-48 w-full max-w-sm">
+
+                <!-- Axis -->
+                <div
+                  class="absolute bottom-6 left-5 right-5 h-px bg-white/30"
+                ></div>
+
+                <div
+                  class="absolute bottom-6 left-1/2 top-5 w-px bg-white/30"
+                ></div>
+
+
+                <!-- Curve -->
+                <svg
+                  class="absolute inset-0 h-full w-full"
+                  viewBox="0 0 400 180"
+                  fill="none"
+                >
+
+                  <path
+                    d="M30 25 C80 120 120 150 200 150 C280 150 320 120 370 25"
+                    stroke="#c4b5fd"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                  />
+
+                  <circle
+                    cx="200"
+                    cy="150"
+                    r="6"
+                    fill="#ffffff"
+                  />
+
+                </svg>
+
+
+                <!-- Data Points -->
+                <div
+                  class="float absolute left-[17%] top-[20%] h-3 w-3 rounded-full bg-purple-300 shadow-lg shadow-purple-300/50"
+                ></div>
+
+                <div
+                  class="float-delay absolute right-[17%] top-[20%] h-3 w-3 rounded-full bg-purple-300 shadow-lg shadow-purple-300/50"
+                ></div>
+
+              </div>
+
+
+              <!-- Bottom Data -->
+              <div class="grid grid-cols-3 gap-3">
+
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+
+                  <p class="text-xs text-purple-300">
+                    SCIENCE
+                  </p>
+
+                  <p class="prompt mt-1 text-lg font-semibold">
+                    🔬
+                  </p>
+
+                </div>
+
+
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+
+                  <p class="text-xs text-purple-300">
+                    MATH
+                  </p>
+
+                  <p class="prompt mt-1 text-lg font-semibold">
+                    ∑
+                  </p>
+
+                </div>
+
+
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+
+                  <p class="text-xs text-purple-300">
+                    FUTURE
+                  </p>
+
+                  <p class="prompt mt-1 text-lg font-semibold">
+                    ∞
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Floating Badge -->
+            <div
+              class="float absolute -right-5 top-24 hidden rounded-2xl border border-purple-100 bg-white p-4 shadow-xl sm:block"
+            >
+
+              <p class="text-xs text-slate-400">
+                THINKING MODE
+              </p>
+
+              <p class="prompt mt-1 font-bold text-lab-700">
+                ON
+              </p>
+
+            </div>
+
+
+            <div
+              class="float-delay absolute -bottom-5 -left-5 hidden rounded-2xl border border-purple-100 bg-white px-5 py-4 shadow-xl sm:block"
+            >
+
+              <p class="text-xs text-slate-400">
+                CURIOSITY
+              </p>
+
+              <p class="prompt mt-1 font-bold text-lab-700">
+                ∞
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT SECTION
+         ========================================================= -->
+
+    <section
+      id="about"
+      class="dot-bg scroll-mt-20 bg-white py-20 sm:py-28"
+    >
+
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div class="reveal mb-14">
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.2em] text-lab-600"
+          >
+            ABOUT ME
+          </p>
+
+          <h2
+            class="prompt mt-3 text-3xl font-bold text-lab-900 sm:text-4xl"
+          >
+            Learn. Think. Discover.
+          </h2>
+
+          <p class="mt-4 max-w-2xl leading-8 text-slate-600">
+            ฉันเชื่อว่าความรู้ที่ดีเริ่มต้นจากคำถาม
+            และการเรียนรู้ที่ดีที่สุดคือการลงมือค้นหาคำตอบด้วยตัวเอง
+          </p>
+
+        </div>
+
+
+        <div class="grid items-center gap-14 lg:grid-cols-2">
+
+          <!-- Profile Image -->
+          <div class="reveal relative">
+
+            <div
+              class="absolute -bottom-6 -left-6 h-32 w-32 rounded-3xl bg-lab-100"
+            ></div>
+
+            <div
+              class="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-purple-100"
+            ></div>
+
+
+            <!-- เปลี่ยนรูปตรงนี้ -->
+            <img
+              src="https://placehold.co/800x700/f1e9ff/6d28d9?text=Your+Photo"
+              alt="รูปโปรไฟล์ [ชื่อ-นามสกุล]"
+              class="relative h-[430px] w-full rounded-[2rem] object-cover shadow-card"
+              loading="lazy"
+            />
+
+          </div>
+
+
+          <!-- About Content -->
+          <div class="reveal">
+
+            <span
+              class="inline-flex rounded-full bg-lab-100 px-4 py-2 text-sm font-semibold text-lab-700"
+            >
+              Curious Mind • Future Scientist
+            </span>
+
+
+            <h3
+              class="prompt mt-5 text-2xl font-bold leading-relaxed text-lab-900 sm:text-3xl"
+            >
+              “ฉันไม่ได้อยากรู้แค่คำตอบ
+              แต่อยากรู้ว่า
+              ทำไมคำตอบนั้นจึงเป็นแบบนั้น”
+            </h3>
+
+
+            <div class="mt-6 space-y-4 leading-8 text-slate-600">
+
+              <p>
+                ปัจจุบันฉันกำลังศึกษาอยู่ชั้นมัธยมศึกษาปีที่ 3
+                และมีความสนใจเป็นพิเศษในวิชาวิทยาศาสตร์และคณิตศาสตร์
+              </p>
+
+              <p>
+                ฉันสนุกกับการแก้โจทย์ การทดลอง
+                การสังเกตสิ่งต่าง ๆ รอบตัว
+                และการค้นหาวิธีแก้ปัญหาที่แตกต่างออกไป
+              </p>
+
+              <p>
+                เป้าหมายในระยะต่อไปคือการศึกษาต่อในระดับ ม.4
+                สายวิทย์–คณิต เพื่อพัฒนาพื้นฐานทางวิชาการ
+                และค้นหาความถนัดของตัวเองสำหรับการศึกษาต่อในอนาคต
+              </p>
+
+            </div>
+
+
+            <!-- Values -->
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+
+              <div class="rounded-2xl border border-purple-100 bg-purple-50 p-5">
+
+                <div class="prompt text-2xl text-lab-600">
+                  ?
+                </div>
+
+                <p class="prompt mt-3 font-semibold text-lab-900">
+                  Curiosity
+                </p>
+
+                <p class="mt-1 text-xs leading-5 text-slate-500">
+                  กล้าที่จะตั้งคำถาม
+                </p>
+
+              </div>
+
+
+              <div class="rounded-2xl border border-purple-100 bg-purple-50 p-5">
+
+                <div class="prompt text-2xl text-lab-600">
+                  ∑
+                </div>
+
+                <p class="prompt mt-3 font-semibold text-lab-900">
+                  Logic
+                </p>
+
+                <p class="mt-1 text-xs leading-5 text-slate-500">
+                  คิดอย่างเป็นระบบ
+                </p>
+
+              </div>
+
+
+              <div class="rounded-2xl border border-purple-100 bg-purple-50 p-5">
+
+                <div class="prompt text-2xl text-lab-600">
+                  ↗
+                </div>
+
+                <p class="prompt mt-3 font-semibold text-lab-900">
+                  Growth
+                </p>
+
+                <p class="mt-1 text-xs leading-5 text-slate-500">
+                  พร้อมพัฒนาตัวเอง
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SKILLS SECTION
+         ========================================================= -->
+
+    <section
+      id="skills"
+      class="scroll-mt-20 bg-lab-50 py-20 sm:py-28"
+    >
+
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div class="reveal text-center">
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.2em] text-lab-600"
+          >
+            MY SKILLS
+          </p>
+
+          <h2
+            class="prompt mt-3 text-3xl font-bold text-lab-900 sm:text-4xl"
+          >
+            Skills I Am Building
+          </h2>
+
+          <p class="mx-auto mt-4 max-w-2xl leading-8 text-slate-600">
+            ทักษะเหล่านี้เป็นทักษะที่กำลังพัฒนา
+            เพื่อเตรียมความพร้อมสำหรับการเรียนสายวิทย์–คณิต
+          </p>
+
+        </div>
+
+
+        <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+
+          <!-- Science -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              🔬
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Science
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              การสังเกต การทดลอง และการอธิบายปรากฏการณ์
+              ด้วยหลักการทางวิทยาศาสตร์
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 78%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Developing</span>
+              <span>78%</span>
+            </div>
+
+          </div>
+
+
+          <!-- Mathematics -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              ∑
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Mathematics
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              การคำนวณ การคิดเชิงตรรกะ
+              และการวิเคราะห์โจทย์ปัญหา
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 82%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Developing</span>
+              <span>82%</span>
+            </div>
+
+          </div>
+
+
+          <!-- Problem Solving -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              🧠
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Problem Solving
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              วิเคราะห์ปัญหา แยกปัญหาเป็นส่วนย่อย
+              และค้นหาวิธีแก้อย่างมีขั้นตอน
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 80%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Developing</span>
+              <span>80%</span>
+            </div>
+
+          </div>
+
+
+          <!-- Coding -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              &lt;/&gt;
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Coding
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              พื้นฐานการเขียนโปรแกรมและการคิดแบบ Computational Thinking
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 65%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Learning</span>
+              <span>65%</span>
+            </div>
+
+          </div>
+
+
+          <!-- Data -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              📊
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Data Analysis
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              การอ่านกราฟ ตารางข้อมูล
+              และการสรุปข้อมูลอย่างเป็นระบบ
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 70%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Learning</span>
+              <span>70%</span>
+            </div>
+
+          </div>
+
+
+          <!-- Teamwork -->
+          <div
+            class="reveal rounded-[2rem] border border-purple-100 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-2xl bg-purple-100 text-2xl text-lab-700"
+            >
+              ◉
+            </div>
+
+            <h3 class="prompt mt-6 text-xl font-bold text-lab-900">
+              Teamwork
+            </h3>
+
+            <p class="mt-2 text-sm leading-7 text-slate-500">
+              การสื่อสาร แบ่งหน้าที่
+              และทำงานร่วมกับผู้อื่น
+            </p>
+
+            <div class="mt-6 h-2 skill-bar">
+              <div
+                class="skill-progress"
+                style="width: 85%"
+              ></div>
+            </div>
+
+            <div class="mt-2 flex justify-between text-xs text-slate-400">
+              <span>Developing</span>
+              <span>85%</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <p class="mt-8 text-center text-xs text-slate-400">
+          * ระดับทักษะเป็นตัวอย่าง ควรปรับให้ตรงกับความสามารถจริง
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PROJECTS SECTION
+         ========================================================= -->
+
+    <section
+      id="projects"
+      class="dot-bg scroll-mt-20 bg-white py-20 sm:py-28"
+    >
+
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div class="reveal mb-14">
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.2em] text-lab-600"
+          >
+            PROJECTS & ACTIVITIES
+          </p>
+
+          <h2
+            class="prompt mt-3 text-3xl font-bold text-lab-900 sm:text-4xl"
+          >
+            Things I Have Explored
+          </h2>
+
+          <p class="mt-4 max-w-2xl leading-8 text-slate-600">
+            ตัวอย่างผลงานและกิจกรรมที่สามารถแก้ไข
+            ให้ตรงกับประสบการณ์จริงของนักเรียน
+          </p>
+
+        </div>
+
+
+        <div class="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+
+
+          <!-- Project 01 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/f1e9ff/6d28d9?text=01+Science"
+                alt="โครงงานวิทยาศาสตร์"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                01
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                SCIENCE
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                โครงงานวิทยาศาสตร์
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ศึกษาปัญหา ตั้งสมมติฐาน
+                ออกแบบการทดลอง และสรุปผลจากข้อมูล
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 02 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/e9d5ff/5b21b6?text=02+Mathematics"
+                alt="โครงงานคณิตศาสตร์"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                02
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                MATHEMATICS
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                โครงงานคณิตศาสตร์
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ประยุกต์ใช้สมการ สถิติ
+                หรือหลักคณิตศาสตร์ในการแก้ปัญหา
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 03 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/ddd6fe/4c1d95?text=03+STEM"
+                alt="กิจกรรม STEM"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                03
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                STEM
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                STEM Challenge
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ออกแบบวิธีแก้ปัญหาโดยใช้ความรู้
+                ด้านวิทยาศาสตร์ เทคโนโลยี และคณิตศาสตร์
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 04 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/c4b5fd/32145f?text=04+Coding"
+                alt="โครงงานเขียนโปรแกรม"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                04
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                CODING
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Mini Coding Project
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ฝึกสร้างโปรแกรมหรือเว็บไซต์ขนาดเล็ก
+                เพื่อแก้ปัญหาหรือฝึกทักษะการเขียนโค้ด
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 05 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/a78bfa/ffffff?text=05+Experiment"
+                alt="การทดลองทางวิทยาศาสตร์"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                05
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                EXPERIMENT
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Science Experiment
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ทดลอง สังเกต เก็บข้อมูล
+                และเปรียบเทียบผลลัพธ์อย่างเป็นระบบ
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 06 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/8b5cf6/ffffff?text=06+Competition"
+                alt="การแข่งขันวิทยาศาสตร์"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                06
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                COMPETITION
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                การแข่งขันวิทยาศาสตร์
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ฝึกทบทวนความรู้ วิเคราะห์โจทย์
+                และแข่งขันตอบปัญหาทางวิทยาศาสตร์
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 07 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/7c3aed/ffffff?text=07+Data"
+                alt="โครงงานวิเคราะห์ข้อมูล"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                07
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                DATA
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Data & Statistics
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                เก็บข้อมูล สร้างตารางหรือกราฟ
+                และวิเคราะห์แนวโน้มจากข้อมูล
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 08 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/6d28d9/ffffff?text=08+Environment"
+                alt="โครงงานสิ่งแวดล้อม"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                08
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                ENVIRONMENT
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Environment Project
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ศึกษาปัญหาสิ่งแวดล้อม
+                และเสนอแนวทางแก้ไขโดยใช้กระบวนการทางวิทยาศาสตร์
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 09 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/5b21b6/ffffff?text=09+Math+Challenge"
+                alt="กิจกรรมคณิตศาสตร์"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                09
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                MATHEMATICS
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Math Challenge
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                ฝึกแก้โจทย์คณิตศาสตร์
+                และพัฒนาความคิดเชิงตรรกะ
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- Project 10 -->
+          <article
+            class="project-card reveal overflow-hidden rounded-[2rem] border border-purple-100 bg-white"
+          >
+
+            <div class="relative overflow-hidden">
+
+              <img
+                src="https://placehold.co/800x500/4c1d95/ffffff?text=10+Future"
+                alt="โครงงาน Future Science"
+                class="h-56 w-full object-cover"
+                loading="lazy"
+              />
+
+              <span
+                class="absolute left-4 top-4 rounded-full bg-lab-800 px-3 py-1 text-xs font-bold text-white"
+              >
+                10
+              </span>
+
+            </div>
+
+            <div class="p-6">
+
+              <p class="text-xs font-bold uppercase tracking-wider text-lab-600">
+                FUTURE
+              </p>
+
+              <h3 class="prompt mt-2 text-xl font-bold text-lab-900">
+                Future Science Project
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-slate-500">
+                โปรเจกต์ที่สะท้อนความสนใจ
+                และเป้าหมายด้านวิทยาศาสตร์หรือเทคโนโลยีในอนาคต
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FUTURE VISION
+         ========================================================= -->
+
+    <section
+      class="relative overflow-hidden bg-lab-900 py-24 text-white"
+    >
+
+      <!-- Decorative Grid -->
+      <div class="absolute inset-0 grid-bg opacity-20"></div>
+
+
+      <div class="relative mx-auto max-w-5xl px-5 text-center lg:px-8">
+
+        <div class="reveal">
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.3em] text-purple-300"
+          >
+            FUTURE VISION
+          </p>
+
+
+          <h2
+            class="prompt mt-5 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl"
+          >
+
+            THINK SCIENTIFICALLY.
+            <br />
+
+            <span class="text-purple-300">
+              SOLVE MATHEMATICALLY.
+            </span>
+
+          </h2>
+
+
+          <p
+            class="mx-auto mt-8 max-w-2xl text-base leading-8 text-purple-100/80 sm:text-lg"
+          >
+            ฉันเชื่อว่าการเรียนรู้ที่แท้จริงไม่ได้จบลง
+            เมื่อเราได้คำตอบ แต่เริ่มต้นขึ้นเมื่อเราเริ่มตั้งคำถามใหม่
+          </p>
+
+
+          <div class="mt-10 flex flex-wrap justify-center gap-3">
+
+            <span
+              class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm"
+            >
+              🔬 Explore
+            </span>
+
+            <span
+              class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm"
+            >
+              ∑ Calculate
+            </span>
+
+            <span
+              class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm"
+            >
+              🧠 Solve
+            </span>
+
+            <span
+              class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm"
+            >
+              🚀 Create
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT SECTION
+         ========================================================= -->
+
+    <section
+      id="contact"
+      class="scroll-mt-20 bg-purple-50 py-20 sm:py-24"
+    >
+
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+
+        <div class="reveal text-center">
+
+          <p
+            class="prompt text-sm font-semibold uppercase tracking-[0.2em] text-lab-600"
+          >
+            CONTACT
+          </p>
+
+          <h2
+            class="prompt mt-3 text-3xl font-bold text-lab-900 sm:text-4xl"
+          >
+            Let's Connect
+          </h2>
+
+          <p class="mx-auto mt-4 max-w-2xl leading-8 text-slate-600">
+            สามารถติดต่อเพื่อสอบถามข้อมูลเกี่ยวกับ Portfolio
+            หรือแลกเปลี่ยนความคิดเห็นเกี่ยวกับการเรียนสายวิทย์–คณิต
+          </p>
+
+        </div>
+
+
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+
+          <!-- Email -->
+          <a
+            href="mailto:student@example.com"
+            class="reveal group rounded-3xl border border-purple-100 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-xl text-lab-700"
+            >
+              @
+            </div>
+
+            <p class="mt-5 text-xs font-bold tracking-widest text-slate-400">
+              EMAIL
+            </p>
+
+            <p
+              class="mt-2 break-all text-sm font-semibold text-lab-900 group-hover:text-lab-600"
+            >
+              student@example.com
+            </p>
+
+          </a>
+
+
+          <!-- Phone -->
+          <a
+            href="tel:08XXXXXXXX"
+            class="reveal group rounded-3xl border border-purple-100 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-xl text-lab-700"
+            >
+              ☎
+            </div>
+
+            <p class="mt-5 text-xs font-bold tracking-widest text-slate-400">
+              PHONE
+            </p>
+
+            <p
+              class="mt-2 text-sm font-semibold text-lab-900 group-hover:text-lab-600"
+            >
+              08X-XXX-XXXX
+            </p>
+
+          </a>
+
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reveal group rounded-3xl border border-purple-100 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-xl text-lab-700"
+            >
+              &lt;/&gt;
+            </div>
+
+            <p class="mt-5 text-xs font-bold tracking-widest text-slate-400">
+              GITHUB
+            </p>
+
+            <p
+              class="mt-2 text-sm font-semibold text-lab-900 group-hover:text-lab-600"
+            >
+              github.com/[username]
+            </p>
+
+          </a>
+
+
+          <!-- Instagram -->
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="reveal group rounded-3xl border border-purple-100 bg-white p-6 shadow-sm transition hover:-translate-y-2 hover:shadow-card"
+          >
+
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-100 text-xl text-lab-700"
+            >
+              ◎
+            </div>
+
+            <p class="mt-5 text-xs font-bold tracking-widest text-slate-400">
+              INSTAGRAM
+            </p>
+
+            <p
+              class="mt-2 text-sm font-semibold text-lab-900 group-hover:text-lab-600"
+            >
+              @[username]
+            </p>
+
+          </a>
+
+        </div>
+
+
+        <!-- CTA -->
+        <div class="reveal mt-10 text-center">
+
+          <a
+            href="mailto:student@example.com"
+            class="inline-flex items-center gap-2 rounded-2xl bg-lab-700 px-8 py-4 font-semibold text-white shadow-lg shadow-purple-200 transition hover:-translate-y-1 hover:bg-lab-800"
+          >
+
+            ติดต่อฉัน
+
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 12h14M13 6l6 6-6 6"
+              />
+
+            </svg>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="bg-[#24103d] text-white">
+
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left lg:px-8"
+      >
+
+        <div>
+
+          <!-- เปลี่ยนชื่อจริงตรงนี้ -->
+          <p class="prompt font-semibold">
+            [ชื่อ-นามสกุล]
+          </p>
+
+          <p class="mt-1 text-xs text-purple-300">
+            Purple Lab • Science & Mathematics Portfolio
+          </p>
+
+        </div>
+
+
+        <p class="text-xs text-purple-300">
+
+          ©
+          <span id="year"></span>
+          [ชื่อ-นามสกุล]
+
+        </p>
+
+      </div>
+
+
+      <div
+        class="border-t border-white/5 px-5 py-4 text-center text-xs text-purple-300/60"
+      >
+        Designed with curiosity • Built for the future
+      </div>
+
+    </footer>
+
+  </main>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    const menuButton =
+      document.getElementById("menu-button");
+
+    const mobileMenu =
+      document.getElementById("mobile-menu");
+
+    const menuOpen =
+      document.getElementById("menu-open");
+
+    const menuClose =
+      document.getElementById("menu-close");
+
+    const mobileLinks =
+      document.querySelectorAll(".mobile-link");
+
+
+    function closeMobileMenu() {
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      mobileMenu.style.maxHeight = "0px";
+
+      mobileMenu.style.opacity = "0";
+
+      menuOpen.classList.remove("hidden");
+
+      menuClose.classList.add("hidden");
+
+    }
+
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const opened =
+          menuButton.getAttribute("aria-expanded") === "true";
+
+
+        if (opened) {
+
+          closeMobileMenu();
+
+        } else {
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+          );
+
+          mobileMenu.style.maxHeight =
+            mobileMenu.scrollHeight + "px";
+
+          mobileMenu.style.opacity = "1";
+
+          menuOpen.classList.add("hidden");
+
+          menuClose.classList.remove("hidden");
+
+        }
+
+      }
+    );
+
+
+    mobileLinks.forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          closeMobileMenu
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       ACTIVE NAVIGATION
+       ========================================================= */
+
+    const sections =
+      document.querySelectorAll(
+        "main section[id]"
+      );
+
+    const navLinks =
+      document.querySelectorAll(
+        ".nav-link"
+      );
+
+
+    const sectionObserver =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+
+              navLinks.forEach(
+                (link) => {
+
+                  link.classList.remove(
+                    "nav-active"
+                  );
+
+                }
+              );
+
+
+              const active =
+                document.querySelector(
+                  `.nav-link[href="#${entry.target.id}"]`
+                );
+
+
+              if (active) {
+
+                active.classList.add(
+                  "nav-active"
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          rootMargin:
+            "-30% 0px -60% 0px"
+        }
+      );
+
+
+    sections.forEach(
+      (section) => {
+
+        sectionObserver.observe(section);
+
+      }
+    );
+
+
+    /* =========================================================
+       SCROLL REVEAL
+       ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "show"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.1
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        revealObserver.observe(
+          element
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       CURRENT YEAR
+       ========================================================= */
+
+    document.getElementById(
+      "year"
+    ).textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       CLOSE MOBILE MENU WHEN RESIZING
+       ========================================================= */
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (window.innerWidth >= 768) {
+          closeMobileMenu();
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
